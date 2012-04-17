@@ -12,6 +12,7 @@ if [ -e "$DIR/.git" ]; then
   exit 1
 else
   $GIT init $DIR &> /dev/null
+  echo "*.current_backup" > "$DIR/.gitignore"
   echo "gb-create: created git repository."
 
   git_server=''

@@ -9,10 +9,16 @@ if [ ! -e "$DIR/.git" ]; then
   echo "gb-backup: not in git repository."
   exit 1
 else
+  # check for removed and new files
   $GIT ls-files -d -z | xargs -0 git update-index --remove
-  $GIT add .
-  $GIT commit -am "`date '+%m%d%H%M%Y.%S'`" &> /dev/null
-  echo "gb-backup: commited changes."
+  $GIT add . 
+  
+  if $GIT diff-index --quiet HEAD -- &> /dev/null; then
+    echo "gb-backup: no changes."
+  else
+    $GIT commit -am "`date +'%d.%m.%Y at %T'`" &> /dev/null
+    echo "gb-backup: commited changes."
 
-  $GB sync
+    $GB sync
+  fi
 fi
