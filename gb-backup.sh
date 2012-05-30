@@ -10,7 +10,7 @@ if [ ! -e "$DIR/.git" ]; then
   exit 1
 else
   # check for removed and new files
-  $GIT ls-files -d -z | xargs -0 git update-index --remove
+  $GIT ls-files -d -z | xargs -0 $GIT update-index --remove
   $GIT add . 
   
   if $GIT diff-index --quiet HEAD -- &> /dev/null; then

@@ -20,7 +20,7 @@ else
       echo -n "Which revision? "
       read file_rev
     done
-   
+
     cp -r $1 "$1.current_backup"
     echo "gb-revert: made backup to $1.current_backup"
 

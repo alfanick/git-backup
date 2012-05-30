@@ -21,7 +21,7 @@ else
     echo -n "What's backup server address? "
     read git_server
   done
-
+  
   ssh $git_server "mkdir $GIT_REMOTE; mkdir $GIT_DIRECTORY; cd $GIT_DIRECTORY; git init --bare ." &> /dev/null
   echo "gb-create: created remote git repository."
 
