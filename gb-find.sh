@@ -13,10 +13,10 @@ else
     echo "gb-grep: add text you want to find."
     exit 1
   else
-    RESULT=`git grep -E -l "$1" $($GIT rev-list --all)`
+    RESULT=`git grep -E -l "$1$2$3$4$5$6$7$8" $($GIT rev-list --all)`
 
     if [ ! -n "$RESULT" ]; then
-      echo "gb-grep: not found any file for $1"
+      echo "gb-grep: not found any file for $1$2$3$4$5$6$7$8"
       exit 1
     else
       GREV=''
